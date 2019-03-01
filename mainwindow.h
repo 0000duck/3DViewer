@@ -16,6 +16,11 @@ public:
     ~MainWindow();
 
 private:
+    void connectEvents();
+    void onBrowseBtnClicked();
+    void onViewBtnClicked();
+
+private:
     Ui::MainWindow *ui;
 };
 
