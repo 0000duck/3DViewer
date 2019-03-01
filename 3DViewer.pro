@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT += 3dcore 3drender 3dinput 3dextras
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,14 +28,17 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    objparser.cpp
+    q3dobjhandler.cpp \
+    graphicsviewer.cpp
 
 HEADERS += \
         mainwindow.h \
-    objparser.h
+    q3dobjhandler.h \
+    graphicsviewer.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    graphicsviewer.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
