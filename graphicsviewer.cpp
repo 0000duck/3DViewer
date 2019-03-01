@@ -9,7 +9,7 @@ GraphicsViewer::GraphicsViewer(QWidget *parent,const QString& filePath) :
 {
     ui->setupUi(this);
 
-     mHandler = new Q3DObjHandler(filePath);
+    mHandler = new Q3DObjHandler(filePath);
     Qt3DExtras::Qt3DWindow* view = new Qt3DExtras::Qt3DWindow();
 
     mScene = mHandler->get3DModel();
@@ -20,7 +20,10 @@ GraphicsViewer::GraphicsViewer(QWidget *parent,const QString& filePath) :
 
     view->setRootEntity(mScene);
     mContainer=createWindowContainer(view, this);
+    mContainer->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
+    mContainer->setWindowState(mContainer->windowState() | Qt::WindowFullScreen);
     ui->setupUi(mContainer);
+    mContainer->showFullScreen();
 }
 
 GraphicsViewer::~GraphicsViewer()
@@ -35,8 +38,8 @@ GraphicsViewer::~GraphicsViewer()
 void GraphicsViewer::setCamera(const  Qt3DExtras::Qt3DWindow* view)
 {
     mCamera = view->camera();
-    mCamera->lens()->setPerspectiveProjection(45.0f, 16.0f/9.0f, 0.1f, 1000.0f);
-    mCamera->setPosition(QVector3D(0, 0, 1));
+    mCamera->lens()->setPerspectiveProjection(50.0f, 2.0f, 0.5f, 1000.0f);
+    mCamera->setPosition(QVector3D(0, 0, 25));
     mCamera->setViewCenter(QVector3D(0, 0, 0));
 }
 
