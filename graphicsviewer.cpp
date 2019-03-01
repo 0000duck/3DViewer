@@ -22,6 +22,7 @@ GraphicsViewer::GraphicsViewer(QWidget *parent,const QString& filePath) :
     mContainer=createWindowContainer(view, this);
     mContainer->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
     mContainer->setWindowState(mContainer->windowState() | Qt::WindowFullScreen);
+    mContainer->setWindowTitle("3d Viewer");
     ui->setupUi(mContainer);
     mContainer->showFullScreen();
 }
